@@ -1,0 +1,79 @@
+<div>
+    <h2>Use of Interpolation, expressions, property binding and event binding</h2>
+    <input
+        type="text"
+        [ngModel] = "name"
+        (ngModelChange) = "handleChange($event)"
+    >
+    <div>{{name}}</div>
+    <button (click)="handleClick()">
+        Change Name
+    </button>
+    <br><br>
+    <h2>Use of Two way data binding</h2>
+    <input
+        type="text"
+        [(ngModel)] = "name"
+    >
+    <div>{{name}}</div>
+    <br><br>
+    <h2>Use of Template #ref variables</h2>
+    <h1>New input</h1>
+    <div>
+        <input 
+        type="text" #username
+        >
+    </div>
+    <h1>Get Username</h1>
+    <button (click)="handleNewClick(username.value)">
+        Change Username
+    </button>
+
+    <br><br>
+    <h2>Use of *ngIf</h2>
+    <div>
+        <h1>New Name used</h1>
+        <input 
+            type="text" 
+            [(ngModel)] = "newName">
+        <p>the name is {{newName}}</p>
+        <div *ngIf="newName.length > 2">
+            Searching for {{newName}}
+        </div>
+    </div>
+    <br><br>
+    <h2>Use of ngFor</h2>
+    <div>
+        <h1>Use of json and date pipes, and safe navigation operator in the below examples</h1>
+        <h3>Airline Passengers</h3>
+        <ul>
+            <li *ngFor = "let passenger of passengers; let i = index;">
+                {{i}}:{{passenger.fullname}}
+                {{ passenger | json}}
+                <div>
+                    Check in date : 
+                    {{passenger.checkedin ? (passenger.checkedInDate | date: 'yMMMd' | uppercase) : 'not checked in' }}
+                </div>
+                <div>
+                    Children: {{passenger.children?.length || 0}}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <br><br>
+    <div>
+        <h1>Passenger Example</h1>
+        <h1>Use of ngClass and ngStyle below</h1>
+        <h3>Airline Passengers</h3>
+        <ul>
+            <li 
+            [ngClass] = "{
+                'checked-in': passenger.checkedin,
+                'checked-out': !passenger.checkedin
+                }"
+            *ngFor = "let passenger of passengers; let i = index;">
+                {{i}}:{{passenger.fullname}}
+            </li>
+        </ul>
+    </div>
+</div>
