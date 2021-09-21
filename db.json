@@ -1,1 +1,37 @@
-{}
+{
+  "passengers": [
+    {
+      "id": 1,
+      "fullname": "Abhinav",
+      "checkedin": true,
+      "checkedInDate": 1490742000000,
+      "children": [
+        {
+          "name": "AbhinavOneChild",
+          "age": 2
+        },
+        {
+          "name": "AbhinavOneChildTwo",
+          "age": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "fullname": "AbhinavTwo",
+      "checkedin": false
+    },
+    {
+      "id": 3,
+      "fullname": "AbhinavThree",
+      "checkedin": true,
+      "checkedInDate": 1490742000000,
+      "children": [
+        {
+          "name": "AbhinavThreeChild",
+          "age": 2
+        }
+      ]
+    }
+  ]
+}
