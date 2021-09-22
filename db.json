@@ -5,33 +5,20 @@
       "fullname": "Abhinav",
       "checkedin": true,
       "checkedInDate": 1490742000000,
-      "children": [
-        {
-          "name": "AbhinavOneChild",
-          "age": 2
-        },
-        {
-          "name": "AbhinavOneChildTwo",
-          "age": 3
-        }
-      ]
+      "baggage": "none"
     },
     {
       "id": 2,
       "fullname": "AbhinavTwo",
-      "checkedin": false
+      "checkedin": false,
+      "baggage": ""
     },
     {
       "id": 3,
       "fullname": "AbhinavThree",
       "checkedin": true,
       "checkedInDate": 1490742000000,
-      "children": [
-        {
-          "name": "AbhinavThreeChild",
-          "age": 2
-        }
-      ]
+      "baggage": ""
     }
   ]
 }

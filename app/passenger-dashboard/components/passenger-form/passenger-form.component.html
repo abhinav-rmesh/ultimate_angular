@@ -1,0 +1,91 @@
+<form #form="ngForm" novalidate>
+   {{detail | json}}    
+   <div>
+      Passenger Name:
+      <input 
+         type="text"
+         name="fullname"
+         required
+         minlength="2"
+         #fullname="ngModel"
+         [ngModel]="detail?.fullname">
+      <div *ngIf="fullname.errors?.required && fullname.touched" class="error">
+         Passenger name is required
+      </div>
+      <div *ngIf="fullname.errors?.minlength && fullname.touched" class="error">
+         Passenger name has inadequate length 
+      </div>
+   </div>
+
+   <div>
+      Passenger Id:
+      <input 
+         type="number"
+         name="id"
+         required
+         #id="ngModel"
+         [ngModel]="detail?.id">
+         <div *ngIf="id.errors?.required && id.touched" class="error">
+            Passenger ID is required
+         </div>
+   </div>
+
+   <div>
+      <label>
+         <input 
+            type="radio"
+            [value]="true" 
+            name="checkedin" 
+            [ngModel]="detail?.checkedin"
+            (ngModelChange)="toggleCheckin($event)" >
+         Yes
+      </label>
+      <label>
+         <input 
+            type="radio"
+            [value]="false" 
+            name="checkedin" 
+            [ngModel]="detail?.checkedin"
+            (ngModelChange)="toggleCheckin($event)">
+         No
+      </label>
+   </div>
+   <div>
+      <label>
+         <input 
+            type="checkbox" 
+            name="checkedin" 
+            [ngModel]="detail?.checkedin"
+            (ngModelChange)="toggleCheckin($event)" >
+      </label>
+   </div>
+   <div *ngIf="form.value.checkedin">
+      Check in Date:
+      <input 
+         type="number"
+         name="checkedInDate"
+         [ngModel]="detail?.checkedInDate">
+   </div>
+   <div>
+      Luggage:
+      <select
+         name="baggage"
+         [ngModel]="detail?.baggage">
+         <option
+            *ngFor="let item of baggage"
+            [value] = "item.key"
+            [selected]="item.key === detail?.baggage">
+               {{item.value}}
+         </option>
+      </select>
+   </div>
+
+   <button
+      type="submit"
+      [disabled]="form.invalid">
+      Update PAssenger
+   </button>
+
+   {{form.value | json}}
+</form>
+
